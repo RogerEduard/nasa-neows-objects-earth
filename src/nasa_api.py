@@ -10,7 +10,7 @@ def get_neo_data(start_date, end_date):
     """Obtains data on near-Earth objects between two dates."""
     url = f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={end_date}&api_key={NASA_API_KEY}"
     response = requests.get(url)
-    
+    print(response)
     if response.status_code == 200:
         return response.json()
     else:
