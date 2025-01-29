@@ -1,0 +1,14 @@
+# Ignorar archivos de configuración sensibles
+.env
+
+# Archivos de compilación y temporales
+*.pyc
+__pycache__/
+
+# Logs y datos temporales
+*.log
+logs/
+
+# Archivos de entornos virtuales
+venv/
+.env/
