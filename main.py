@@ -1,18 +1,20 @@
-from src.nasa_api import get_nasa_products
-from src.processing import process_nasa_data, analyze_nasa_data
+from src.nasa_api import get_neo_data
 from src.aws_utils import upload_to_s3
+from src.processing import process_neo_data
 import pandas as pd
-from dotenv import load_dotenv
-import os
-
-# Load environment variables from file .env
-load_dotenv()
 
 # Configuration
-API_KEY = os.getenv("NASA_API_KEY")  # Load the API Key from the .env
 BUCKET_NAME = "objects-earth"
-RAW_KEY = "raw-data/nasa_products.csv"
-PROCESSED_KEY = "processed-data/nasa_processed.csv"
+RAW_KEY = "raw-data/neo_data.csv"
+PROCESSED_KEY = "processed-data/neo_processed.csv"
+
+# Get data from NASA
+print("Getting data from NASA...")
+neo_data = get_neo_data(start_date="2025-01-01", end_date="2025-01-07")
+
+# Save raw data to S3
+df_raw = pd.DataFrame(neo_data["near_earth_objects"])
+upload_to_s3(BUCKET_NAME, RAW_KEY, df_raw)
 
 
 
