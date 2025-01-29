@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 # Configuration
-API_KEY = os.getenv("API_KEY")  # Load the API Key from the .env
+API_KEY = os.getenv("NASA_API_KEY")  # Load the API Key from the .env
 BUCKET_NAME = "objects-earth"
 RAW_KEY = "raw-data/nasa_products.csv"
 PROCESSED_KEY = "processed-data/nasa_processed.csv"
